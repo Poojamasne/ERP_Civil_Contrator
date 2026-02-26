@@ -84,6 +84,7 @@ export default function Dashboard() {
           value={`₹${(kpis.totalBudget / 1000000).toFixed(1)}M`}
           color="purple"
           icon={<IndianRupee size={32} />}
+
         />
         <KPICard
           title="Pending Payments"
