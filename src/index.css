@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900;
+  }
+  
+  button {
+    @apply transition-colors duration-200;
+  }
+
+  :root {
+    --color-primary: #0284c7;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 active:bg-blue-800 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 bg-slate-200 text-slate-900 rounded-lg font-medium hover:bg-slate-300 active:bg-slate-400;
+  }
+
+  .btn-danger {
+    @apply px-4 py-2 bg-red-600 text-white rounded-lg font-medium hover:bg-red-700 active:bg-red-800;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-slate-200 p-6;
+  }
+
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/50 flex items-center justify-center z-50;
+  }
+
+  .modal {
+    @apply bg-white rounded-xl shadow-2xl max-w-2xl w-full mx-4;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+  }
+
+  .label-text {
+    @apply block text-sm font-medium text-slate-700 mb-2;
+  }
+
+  .sidebar {
+    @apply w-64 bg-slate-900 text-white flex flex-col border-r border-slate-800;
+  }
+
+  .sidebar-item {
+    @apply block px-4 py-3 text-sm font-medium rounded-lg mx-2 my-1 transition-colors duration-200 hover:bg-slate-800;
+  }
+
+  .sidebar-item-active {
+    @apply bg-blue-600 hover:bg-blue-700;
+  }
+
+  .kpi-card {
+    @apply bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-md transition-shadow;
+  }
+
+  .table-header {
+    @apply bg-slate-100 border-b border-slate-200;
+  }
+
+  .table-cell {
+    @apply px-6 py-4 text-sm text-slate-900;
+  }
+}
