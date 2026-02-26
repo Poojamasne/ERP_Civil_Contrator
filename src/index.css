@@ -48,15 +48,45 @@
   }
 
   .sidebar {
-    @apply w-64 bg-slate-900 text-white flex flex-col border-r border-slate-800;
+    @apply fixed left-0 top-0 h-screen w-20 md:w-64 bg-slate-900 text-white flex flex-col border-r border-slate-800 z-40 transition-all duration-300;
   }
 
   .sidebar-item {
-    @apply block px-4 py-3 text-sm font-medium rounded-lg mx-2 my-1 transition-colors duration-200 hover:bg-slate-800;
+    @apply block py-3 text-sm font-medium rounded-lg mx-1 md:mx-2 my-1 transition-colors duration-200 hover:bg-slate-800 flex-shrink-0;
   }
 
   .sidebar-item-active {
-    @apply bg-blue-600 hover:bg-blue-700;
+    @apply bg-blue-600 hover:bg-blue-700 text-white;
+  }
+
+  /* Scrollbar styling */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+
+  .scrollbar-thumb-slate-700 {
+    scrollbar-color: #374151 #111827;
+  }
+
+  .scrollbar-track-slate-900 {
+    /* Used with scrollbar-color */
+  }
+
+  /* For webkit browsers */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-slate-900;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-slate-700 rounded;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-600;
   }
 
   .kpi-card {

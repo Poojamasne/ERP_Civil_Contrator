@@ -102,56 +102,58 @@ export function LayoutSidebar() {
   return (
     <aside className="sidebar">
       {/* Logo */}
-      <div className="px-6 py-6 border-b border-slate-800">
-        <h1 className="text-2xl font-bold text-blue-500">ERP CIVI</h1>
-        <p className="text-xs text-slate-400 mt-1">Civil Contractor ERP</p>
+      <div className="px-4 md:px-6 py-6 border-b border-slate-800 flex-shrink-0">
+       <img src="/src/assets/Logo.svg" alt="ERP CIVI" className="w-8 h-8 mb-2" style={{width: '80%', height: '80%', alignItems: 'center'}}/>
       </div>
 
       {/* User Info */}
       {user && (
-        <div className="px-6 py-4 border-b border-slate-800">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white">
+        <div className="px-4 md:px-6 py-4 border-b border-slate-800 flex-shrink-0">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-blue-600 flex-shrink-0 flex items-center justify-center text-white">
               <User size={20} />
             </div>
-            <div>
-              <p className="text-sm font-semibold text-white">{user.name}</p>
-              <p className="text-xs text-slate-400 capitalize">{user.role.replace('_', ' ')}</p>
+            <div className="min-w-0 hidden md:block">
+              <p className="text-sm font-semibold text-white truncate">{user.name}</p>
+              <p className="text-xs text-slate-400 capitalize truncate">{user.role.replace('_', ' ')}</p>
             </div>
           </div>
         </div>
       )}
 
-      {/* Navigation Menu */}
-      <nav className="flex-1 py-4">
+      {/* Navigation Menu - Scrollable */}
+      <nav className="flex-1 overflow-y-auto py-4 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900">
         {visibleMenuItems.map(item => (
           <button
             key={item.id}
             onClick={() => setCurrentModule(item.module)}
             className={`sidebar-item ${
               currentModule === item.module ? 'sidebar-item-active' : ''
-            } flex items-center gap-3 w-full`}
+            } flex items-center gap-3 w-full px-2 md:px-4`}
+            title={item.label}
           >
-            {item.icon}
-            <span>{item.label}</span>
+            <span className="flex-shrink-0">{item.icon}</span>
+            <span className="hidden md:inline text-nowrap">{item.label}</span>
           </button>
         ))}
       </nav>
 
       {/* Footer - Logout */}
-      <div className="px-6 py-4 border-t border-slate-800">
+      <div className="px-4 md:px-6 py-4 border-t border-slate-800 flex-shrink-0">
         <button
           onClick={() => logout()}
-          className="sidebar-item flex items-center gap-3 w-full text-red-400 hover:bg-red-950 hover:text-red-300"
+          className="sidebar-item flex items-center gap-3 w-full text-red-400 hover:bg-red-950 hover:text-red-300 px-2 md:px-4 justify-center md:justify-start"
+          title="Logout"
         >
           <LogOut size={20} />
-          <span>Logout</span>
+          <span className="hidden md:inline">Logout</span>
         </button>
       </div>
 
       {/* Version */}
-      <div className="px-6 py-2 text-xs text-slate-500 text-center border-t border-slate-800">
-        <p>v1.0.0</p>
+      <div className="px-4 md:px-6 py-2 text-xs text-slate-500 text-center border-t border-slate-800 flex-shrink-0">
+        <p className="hidden md:block">v1.0.0</p>
+        <p className="md:hidden">v1</p>
       </div>
     </aside>
   );

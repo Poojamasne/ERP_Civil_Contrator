@@ -4,7 +4,7 @@ import { storage } from '../utils/storage';
 import { KPICard } from '../components/KPICard';
 import { Table } from '../components/Table';
 import { Project, RunningBill, Invoice } from '../types';
-import { TrendingUp, DollarSign, Briefcase, AlertCircle } from 'lucide-react';
+import { TrendingUp, IndianRupee, Briefcase, AlertCircle } from 'lucide-react';
 
 export default function Dashboard() {
   const kpis = useMemo(() => {
@@ -83,7 +83,7 @@ export default function Dashboard() {
           title="Total Budget"
           value={`₹${(kpis.totalBudget / 1000000).toFixed(1)}M`}
           color="purple"
-          icon={<DollarSign size={32} />}
+          icon={<IndianRupee size={32} />}
         />
         <KPICard
           title="Pending Payments"

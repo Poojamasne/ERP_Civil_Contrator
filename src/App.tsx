@@ -62,8 +62,8 @@ function App() {
   return (
     <div className="flex h-screen bg-slate-50">
       <LayoutSidebar />
-      <main className="flex-1 overflow-auto">
-        <div className="p-8">
+      <main className="flex-1 overflow-auto ml-0 md:ml-64">
+        <div className="p-4 md:p-8">
           {renderPage()}
         </div>
       </main>
