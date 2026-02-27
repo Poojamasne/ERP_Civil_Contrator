@@ -77,10 +77,10 @@ export function Form({
   const col2Fields = fields.filter(f => f.col === 2);
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid grid-cols-2 gap-6">
+    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         {/* Column 1 */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {col1Fields.map(field => (
             <FormField
               key={field.name}
@@ -92,7 +92,7 @@ export function Form({
           ))}
         </div>
         {/* Column 2 */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {col2Fields.map(field => (
             <FormField
               key={field.name}
@@ -106,7 +106,7 @@ export function Form({
       </div>
 
       {/* Form Actions */}
-      <div className="flex gap-4 pt-6 border-t border-slate-200">
+      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 sm:pt-6 border-t border-slate-200">
         {onCancel && (
           <button
             type="button"

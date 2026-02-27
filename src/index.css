@@ -16,43 +16,50 @@
 
 @layer components {
   .btn-primary {
-    @apply px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 active:bg-blue-800 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply px-3 py-2 sm:px-4 sm:py-2 text-sm sm:text-base bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 active:bg-blue-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors whitespace-nowrap;
   }
 
   .btn-secondary {
-    @apply px-4 py-2 bg-slate-200 text-slate-900 rounded-lg font-medium hover:bg-slate-300 active:bg-slate-400;
+    @apply px-3 py-2 sm:px-4 sm:py-2 text-sm sm:text-base bg-slate-200 text-slate-900 rounded-lg font-medium hover:bg-slate-300 active:bg-slate-400 transition-colors whitespace-nowrap;
   }
 
   .btn-danger {
-    @apply px-4 py-2 bg-red-600 text-white rounded-lg font-medium hover:bg-red-700 active:bg-red-800;
+    @apply px-3 py-2 sm:px-4 sm:py-2 text-sm sm:text-base bg-red-600 text-white rounded-lg font-medium hover:bg-red-700 active:bg-red-800 transition-colors whitespace-nowrap;
   }
 
   .card {
-    @apply bg-white rounded-xl shadow-sm border border-slate-200 p-6;
+    @apply bg-white rounded-lg sm:rounded-xl shadow-sm border border-slate-200 p-4 sm:p-6;
   }
 
   .modal-overlay {
-    @apply fixed inset-0 bg-black/50 flex items-center justify-center z-50;
+    @apply fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 overflow-y-auto;
   }
 
   .modal {
-    @apply bg-white rounded-xl shadow-2xl max-w-2xl w-full mx-4;
+    @apply bg-white rounded-lg sm:rounded-xl shadow-2xl w-full sm:max-w-sm md:max-w-2xl lg:max-w-4xl max-h-[90vh] overflow-y-auto my-auto;
   }
 
   .input-field {
-    @apply w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+    @apply w-full px-3 py-2 sm:px-4 sm:py-2 text-sm sm:text-base border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all;
   }
 
   .label-text {
-    @apply block text-sm font-medium text-slate-700 mb-2;
+    @apply block text-xs sm:text-sm font-medium text-slate-700 mb-1 sm:mb-2;
   }
 
   .sidebar {
-    @apply fixed left-0 top-0 h-screen w-20 md:w-64 bg-slate-900 text-white flex flex-col border-r border-slate-800 z-40 transition-all duration-300;
+    @apply w-16 sm:w-20 lg:w-64 bg-slate-900 text-white flex flex-col border-r border-slate-800 z-40 h-screen ml-1 sm:ml-1 lg:ml-0;
+  }
+
+  /* Sidebar mobile/tablet animations */
+  @media (max-width: 1024px) {
+    .sidebar {
+      @apply fixed left-0 top-16 sm:top-20 h-[calc(100vh-64px)] sm:h-[calc(100vh-80px)];
+    }
   }
 
   .sidebar-item {
-    @apply block py-3 text-sm font-medium rounded-lg mx-1 md:mx-2 my-1 transition-colors duration-200 hover:bg-slate-800 flex-shrink-0;
+    @apply block py-2 sm:py-3 text-xs sm:text-sm font-medium rounded-lg mx-0.5 sm:mx-1 md:mx-2 my-0.5 sm:my-1 px-1 sm:px-2 transition-colors duration-200 hover:bg-slate-800 flex-shrink-0;
   }
 
   .sidebar-item-active {
@@ -90,14 +97,26 @@
   }
 
   .kpi-card {
-    @apply bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-md transition-shadow;
+    @apply bg-white rounded-lg sm:rounded-xl shadow-sm border border-slate-200 p-3 sm:p-6 hover:shadow-md transition-shadow;
   }
 
   .table-header {
-    @apply bg-slate-100 border-b border-slate-200;
+    @apply bg-slate-100 border-b border-slate-200 text-xs sm:text-sm font-semibold;
   }
 
   .table-cell {
-    @apply px-6 py-4 text-sm text-slate-900;
+    @apply px-2 sm:px-3 md:px-4 lg:px-6 py-2 sm:py-3 md:py-4 text-xs sm:text-sm text-slate-900;
+  }
+
+  /* Sidebar mobile animation */
+  @media (max-width: 1024px) {
+    .sidebar {
+      @apply fixed left-0 top-16 sm:top-20 h-[calc(100vh-64px)] sm:h-[calc(100vh-80px)] transition-all duration-300 ease-in-out;
+    }
+  }
+
+  /* Mobile header styling */
+  .mobile-header {
+    @apply flex items-center gap-2 sm:gap-3 bg-white border-b border-slate-200 p-3 sm:p-4 lg:hidden sticky top-0 z-30;
   }
 }

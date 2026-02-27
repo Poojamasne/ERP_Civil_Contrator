@@ -58,15 +58,15 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       {/* Page Header */}
-      <div className="border-b border-slate-200 pb-6">
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">Dashboard</h1>
-        <p className="text-slate-600">Welcome back! Here's your project overview.</p>
+      <div className="border-b border-slate-200 pb-4 sm:pb-6">
+        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-1 sm:mb-2">Dashboard</h1>
+        <p className="text-sm sm:text-base text-slate-600">Welcome back! Here's your project overview.</p>
       </div>
 
       {/* KPI Cards Grid */}
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
         <KPICard
           title="Total Projects"
           value={kpis.totalProjects}
@@ -95,7 +95,7 @@ export default function Dashboard() {
       </div>
 
       {/* Secondary KPI Row */}
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
         <KPICard
           title="Total Billed"
           value={`₹${(kpis.totalBilled / 100000).toFixed(1)}L`}
@@ -117,29 +117,29 @@ export default function Dashboard() {
       </div>
 
       {/* Charts Row */}
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         {/* Monthly Billing Chart */}
         <div className="card">
-          <h3 className="text-lg font-semibold text-slate-900 mb-6">Monthly Billing Trend</h3>
-          <ResponsiveContainer width="100%" height={300}>
+          <h3 className="text-base sm:text-lg font-semibold text-slate-900 mb-4 sm:mb-6">Monthly Billing Trend</h3>
+          <ResponsiveContainer width="100%" height={250}>
             <BarChart data={monthlyBillingData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-              <XAxis dataKey="month" stroke="#94a3b8" />
-              <YAxis stroke="#94a3b8" />
+              <XAxis dataKey="month" stroke="#94a3b8" tick={{ fontSize: 12 }} />
+              <YAxis stroke="#94a3b8" tick={{ fontSize: 12 }} />
               <Tooltip
                 contentStyle={{ backgroundColor: '#1e293b', border: 'none', borderRadius: '8px', color: '#fff' }}
               />
               <Legend />
               <Bar dataKey="billing" fill="#0ea5e9" name="Actual Billing" />
-              <Bar dataKey="target" fill="#cbd5e1" name="Target" />
+              <Bar dataKey="target" fill="#9fa7af" name="Target" />
             </BarChart>
           </ResponsiveContainer>
         </div>
 
         {/* Project Status Pie Chart */}
         <div className="card">
-          <h3 className="text-lg font-semibold text-slate-900 mb-6">Project Status Breakdown</h3>
-          <ResponsiveContainer width="100%" height={300}>
+          <h3 className="text-base sm:text-lg font-semibold text-slate-900 mb-4 sm:mb-6">Project Status Breakdown</h3>
+          <ResponsiveContainer width="100%" height={250}>
             <PieChart>
               <Pie
                 data={projectStatusData}
@@ -147,7 +147,7 @@ export default function Dashboard() {
                 cy="50%"
                 labelLine={false}
                 label={({ name, value }) => `${name}: ${value}`}
-                outerRadius={80}
+                outerRadius={60}
                 fill="#8884d8"
                 dataKey="value"
               >

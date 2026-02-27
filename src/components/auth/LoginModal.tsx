@@ -36,7 +36,7 @@ export function LoginModal() {
     <div className="modal-overlay">
       <div className="modal p-8">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-blue-600 mb-2">ERP CIVI</h1>
+          <h1 className="text-4xl font-bold text-blue-600 mb-2">ERP CIVIL</h1>
           <p className="text-slate-600">Civil Contractor Enterprise Resource Planning</p>
         </div>
 

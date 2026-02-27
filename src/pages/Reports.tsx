@@ -61,20 +61,20 @@ export default function Reports() {
   }, [invoices]);
 
   return (
-    <div className="space-y-8">
-      <div className="border-b border-slate-200 pb-6">
-        <h1 className="text-3xl font-bold text-slate-900">Reports & Analytics</h1>
-        <p className="text-slate-600 mt-1">Project summaries and financial reports</p>
+    <div className="space-y-6 sm:space-y-8">
+      <div className="border-b border-slate-200 pb-4 sm:pb-6">
+        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">Reports & Analytics</h1>
+        <p className="text-sm sm:text-base text-slate-600 mt-1">Project summaries and financial reports</p>
       </div>
 
       {/* Billing Summary Chart */}
       <div className="card">
-        <h3 className="text-lg font-semibold text-slate-900 mb-6">Billing Status Summary</h3>
-        <ResponsiveContainer width="100%" height={300}>
+        <h3 className="text-base sm:text-lg font-semibold text-slate-900 mb-4 sm:mb-6">Billing Status Summary</h3>
+        <ResponsiveContainer width="100%" height={250}>
           <BarChart data={billingSummary}>
             <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-            <XAxis dataKey="status" stroke="#94a3b8" />
-            <YAxis stroke="#94a3b8" />
+            <XAxis dataKey="status" stroke="#94a3b8" tick={{ fontSize: 12 }} />
+            <YAxis stroke="#94a3b8" tick={{ fontSize: 12 }} />
             <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: 'none', borderRadius: '8px', color: '#fff' }} />
             <Legend />
             <Bar dataKey="count" fill="#0ea5e9" name="Bill Count" />
@@ -131,28 +131,28 @@ export default function Reports() {
       </div>
 
       {/* Key Metrics */}
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
         <div className="card">
-          <p className="text-sm font-medium text-slate-600">Total Revenue</p>
-          <p className="text-2xl font-bold text-slate-900 mt-2">
+          <p className="text-xs sm:text-sm font-medium text-slate-600">Total Revenue</p>
+          <p className="text-xl sm:text-2xl font-bold text-slate-900 mt-1 sm:mt-2">
             ₹{(projectSummary.reduce((sum, p) => sum + p.invoiced, 0) / 100000).toFixed(2)}L
           </p>
         </div>
         <div className="card">
-          <p className="text-sm font-medium text-slate-600">Total Collected</p>
-          <p className="text-2xl font-bold text-green-600 mt-2">
+          <p className="text-xs sm:text-sm font-medium text-slate-600">Total Collected</p>
+          <p className="text-xl sm:text-2xl font-bold text-green-600 mt-1 sm:mt-2">
             ₹{(projectSummary.reduce((sum, p) => sum + p.paid, 0) / 100000).toFixed(2)}L
           </p>
         </div>
         <div className="card">
-          <p className="text-sm font-medium text-slate-600">Pending Payments</p>
-          <p className="text-2xl font-bold text-red-600 mt-2">
+          <p className="text-xs sm:text-sm font-medium text-slate-600">Pending Payments</p>
+          <p className="text-xl sm:text-2xl font-bold text-red-600 mt-1 sm:mt-2">
             ₹{(pendingPayments.reduce((sum, p) => sum + p.amount, 0) / 100000).toFixed(2)}L
           </p>
         </div>
         <div className="card">
-          <p className="text-sm font-medium text-slate-600">Avg Profit Margin</p>
-          <p className="text-2xl font-bold text-blue-600 mt-2">
+          <p className="text-xs sm:text-sm font-medium text-slate-600">Avg Profit Margin</p>
+          <p className="text-xl sm:text-2xl font-bold text-blue-600 mt-1 sm:mt-2">
             {(projectSummary.reduce((sum, p) => sum + Number(p.profitMargin), 0) / projectSummary.length).toFixed(1)}%
           </p>
         </div>

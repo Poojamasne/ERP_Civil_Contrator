@@ -1,4 +1,4 @@
-// Data types and interfaces for ERP CIVI system
+// Data types and interfaces for ERP CIVIL system
 
 export type UserRole = 'admin' | 'finance' | 'project_manager' | 'site_engineer';
 export type ProjectStatus = 'planning' | 'ongoing' | 'completed' | 'on_hold';

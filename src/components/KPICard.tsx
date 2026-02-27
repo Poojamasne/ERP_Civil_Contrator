@@ -33,30 +33,30 @@ export function KPICard({
       onClick={onClick}
       className={`kpi-card cursor-pointer border-2 ${colorMap[color]}`}
     >
-      <div className="flex items-start justify-between">
-        <div className="flex-1">
-          <p className="text-sm font-medium opacity-75">{title}</p>
-          <h3 className="text-3xl font-bold mt-2">
+      <div className="flex items-start justify-between gap-2">
+        <div className="flex-1 min-w-0">
+          <p className="text-xs sm:text-sm font-medium opacity-75 truncate">{title}</p>
+          <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mt-1 sm:mt-2">
             {value}
-            {unit && <span className="text-lg ml-1">{unit}</span>}
+            {unit && <span className="text-xs sm:text-base lg:text-lg ml-1">{unit}</span>}
           </h3>
           {change !== undefined && (
-            <div className="flex items-center gap-1 mt-2 text-sm">
+            <div className="flex items-center gap-1 mt-1 sm:mt-2 text-xs sm:text-sm">
               {change >= 0 ? (
                 <>
-                  <TrendingUp size={16} />
+                  <TrendingUp size={14} className="sm:size-4" />
                   <span>{change}% from last month</span>
                 </>
               ) : (
                 <>
-                  <TrendingDown size={16} />
+                  <TrendingDown size={14} className="sm:size-4" />
                   <span>{Math.abs(change)}% from last month</span>
                 </>
               )}
             </div>
           )}
         </div>
-        {icon && <div className="text-3xl opacity-50">{icon}</div>}
+        {icon && <div className="text-lg sm:text-2xl lg:text-3xl opacity-50 flex-shrink-0">{icon}</div>}
       </div>
     </div>
   );

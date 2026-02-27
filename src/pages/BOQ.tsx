@@ -59,12 +59,12 @@ export default function BOQ() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between border-b border-slate-200 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 border-b border-slate-200 pb-4 sm:pb-6">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900">Bill of Quantities</h1>
-          <p className="text-slate-600 mt-1">Manage project BOQ items and rates</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">Bill of Quantities</h1>
+          <p className="text-sm sm:text-base text-slate-600 mt-1">Manage project BOQ items and rates</p>
         </div>
-        <button onClick={handleCreate} className="btn-primary flex items-center gap-2">
+        <button onClick={handleCreate} className="btn-primary flex items-center gap-2 whitespace-nowrap">
           <Plus size={20} /> Add BOQ Item
         </button>
       </div>

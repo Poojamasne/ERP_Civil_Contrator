@@ -22,16 +22,16 @@ export function Modal({ isOpen, onClose, title, children, size = 'lg' }: ModalPr
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className={`modal ${sizeClasses[size]}`} onClick={e => e.stopPropagation()}>
-        <div className="flex items-center justify-between p-6 border-b border-slate-200">
-          <h2 className="text-xl font-bold text-slate-900">{title}</h2>
+        <div className="flex items-start sm:items-center justify-between p-3 sm:p-6 border-b border-slate-200 gap-2">
+          <h2 className="text-lg sm:text-xl font-bold text-slate-900 flex-1 break-words">{title}</h2>
           <button
             onClick={onClose}
-            className="p-1 hover:bg-slate-100 rounded-lg transition-colors"
+            className="p-1 hover:bg-slate-100 rounded-lg transition-colors flex-shrink-0"
           >
-            <X size={24} className="text-slate-500" />
+            <X size={20} className="sm:size-24 text-slate-500" />
           </button>
         </div>
-        <div className="p-6">
+        <div className="p-3 sm:p-6">
           {children}
         </div>
       </div>

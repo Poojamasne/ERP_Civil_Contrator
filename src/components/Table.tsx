@@ -33,7 +33,7 @@ export function Table({
   }
 
   return (
-    <div className="overflow-x-auto rounded-xl border border-slate-200">
+    <div className="overflow-x-auto rounded-lg sm:rounded-xl border border-slate-200 -mx-1 sm:mx-0">
       <table className="w-full">
         <thead>
           <tr className="table-header">
@@ -41,7 +41,7 @@ export function Table({
               <th
                 key={idx}
                 className="table-cell font-semibold text-left text-slate-700"
-                style={{ width: col.width }}
+                style={{ width: col.width, minWidth: '80px' }}
               >
                 {col.header}
               </th>
@@ -58,13 +58,13 @@ export function Table({
               } ${hover ? 'hover:bg-slate-100' : ''} transition-colors`}
             >
               {columns.map((col, colIdx) => (
-                <td key={colIdx} className="table-cell">
+                <td key={colIdx} className="table-cell break-words">
                   {col.render ? col.render(row[col.accessor], row) : row[col.accessor]}
                 </td>
               ))}
               {rowActions && (
                 <td className="table-cell text-right">
-                  <div className="flex items-center justify-end gap-2">
+                  <div className="flex items-center justify-end gap-1 sm:gap-2 flex-wrap">
                     {rowActions(row)}
                   </div>
                 </td>
