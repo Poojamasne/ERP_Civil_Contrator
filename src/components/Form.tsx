@@ -127,15 +127,19 @@ export function Form({
     </form>
   );
 }
-
+// Update the FormFieldProps interface
 interface FormFieldProps {
-  field: FormField;
+  field: FormField & { className?: string }; // Add className to field
   value: any;
   error?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
 }
 
+// Update the FormField component to use the className
 function FormField({ field, value, error, onChange }: FormFieldProps) {
+  // Determine textarea height class
+  const textareaHeightClass = field.className || 'h-24'; // Use custom className if provided, otherwise default to h-24
+  
   return (
     <div>
       <label className="label-text">
@@ -162,7 +166,7 @@ function FormField({ field, value, error, onChange }: FormFieldProps) {
           value={value}
           onChange={onChange}
           placeholder={field.placeholder}
-          className={`input-field resize-none h-24 ${error ? 'border-red-500 focus:ring-red-500' : ''}`}
+          className={`input-field resize-none ${textareaHeightClass} ${error ? 'border-red-500 focus:ring-red-500' : ''}`}
         />
       ) : (
         <input
@@ -178,3 +182,4 @@ function FormField({ field, value, error, onChange }: FormFieldProps) {
     </div>
   );
 }
+

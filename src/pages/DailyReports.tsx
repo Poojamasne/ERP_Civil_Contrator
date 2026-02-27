@@ -87,25 +87,36 @@ export default function DailyReports() {
       />
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Create Daily Report">
-        <Form
-          fields={[
-            { name: 'projectId', label: 'Project', type: 'select', required: true, options: projects.map(p => ({ value: p.id, label: p.name })) },
-            { name: 'siteEngineer', label: 'Site Engineer Name', type: 'text', required: true, col: 2 },
-            { name: 'workDescription', label: 'Work Description', type: 'textarea', required: true },
-            { name: 'boqItemId', label: 'BOQ Item (Optional)', type: 'select', options: [
-              { value: '', label: 'Select BOQ Item' },
-              ...projectBoqItems.map(b => ({ value: b.id, label: b.itemName })),
-            ], col: 2 },
-            { name: 'quantityExecuted', label: 'Quantity Executed', type: 'number', required: true },
-            { name: 'unit', label: 'Unit', type: 'text', placeholder: 'e.g., cum, m³, boxes', col: 2 },
-            { name: 'weather', label: 'Weather Conditions', type: 'text', placeholder: 'Clear, Rainy, etc.' },
-            { name: 'noOfWorkers', label: 'No of Workers', type: 'number', col: 2 },
-            { name: 'remarks', label: 'Remarks', type: 'textarea' },
-          ]}
-          onSubmit={handleSubmit}
-          onCancel={() => setIsModalOpen(false)}
-        />
-      </Modal>
+  <Form
+    fields={[
+      { name: 'projectId', label: 'Project', type: 'select', required: true, options: projects.map(p => ({ value: p.id, label: p.name })) },
+      { name: 'siteEngineer', label: 'Site Engineer Name', type: 'text', required: true, col: 2 },
+      { 
+        name: 'workDescription', 
+        label: 'Work Description', 
+        type: 'textarea', 
+        required: true,
+        className: 'h-10' // Add custom class for smaller height
+      },
+      { name: 'boqItemId', label: 'BOQ Item (Optional)', type: 'select', options: [
+        { value: '', label: 'Select BOQ Item' },
+        ...projectBoqItems.map(b => ({ value: b.id, label: b.itemName })),
+      ], col: 2 },
+      { name: 'quantityExecuted', label: 'Quantity Executed', type: 'number', required: true },
+      { name: 'unit', label: 'Unit', type: 'text', placeholder: 'e.g., cum, m³, boxes', col: 2 },
+      { name: 'weather', label: 'Weather Conditions', type: 'text', placeholder: 'Clear, Rainy, etc.' },
+      { name: 'noOfWorkers', label: 'No of Workers', type: 'number', col: 2 },
+      { 
+        name: 'remarks', 
+        label: 'Remarks', 
+        type: 'textarea',
+        className: 'h-10' 
+      },
+    ]}
+    onSubmit={handleSubmit}
+    onCancel={() => setIsModalOpen(false)}
+  />
+</Modal>
     </div>
   );
 }
