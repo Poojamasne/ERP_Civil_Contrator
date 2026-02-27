@@ -1,6 +1,7 @@
 import { useAppStore } from '../../store';
 import { User, LogOut, Home, Briefcase, FileText, Users, Truck, Package, Wrench, FileCheck, BarChart3 } from 'lucide-react';
 
+
 interface MenuItem {
   id: string;
   label: string;
@@ -119,7 +120,7 @@ export function LayoutSidebar({ isOpen = false, onClose }: LayoutSidebarProps) {
       <div className={`px-2 sm:px-4 lg:px-6 py-4 sm:py-6 border-b border-slate-800 flex-shrink-0 flex items-center ${
         isOpen ? 'justify-start ml-2' : 'justify-center lg:justify-start lg:ml-2'
       }`}>
-        <img src="/Logo.svg" alt="" className="w-6 sm:w-7 lg:w-8 h-6 sm:h-7 lg:h-8" style={{width: '80%', height: '80%'}} />
+        <img src="/src/assets/icons/Logo.svg" alt="" className="w-6 sm:w-7 lg:w-8 h-6 sm:h-7 lg:h-8" style={{width: '80%', height: '80%'}} />
       </div>
 
       {/* User Info */}
