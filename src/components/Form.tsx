@@ -10,6 +10,7 @@ export interface FormField {
   defaultValue?: any;
   validate?: (value: any) => string | undefined;
   col?: 1 | 2;
+  className?: string;
 }
 
 interface FormProps {
@@ -129,7 +130,7 @@ export function Form({
 }
 // Update the FormFieldProps interface
 interface FormFieldProps {
-  field: FormField & { className?: string }; // Add className to field
+  field: FormField; 
   value: any;
   error?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
