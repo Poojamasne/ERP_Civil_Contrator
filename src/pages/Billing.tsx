@@ -99,7 +99,7 @@ export default function Billing() {
         <Form
           fields={[
             { name: 'projectId', label: 'Project', type: 'select', required: true, options: projects.map(p => ({ value: p.id, label: p.name })) },
-            { name: 'billNumber', label: 'Bill Number', type: 'text', placeholder: 'RB/2024/001', required: true },
+            { name: 'billNumber', label: 'Bill Number', type: 'text', placeholder: '', required: true },
             { name: 'billDate', label: 'Bill Date', type: 'date', required: true, col: 2 },
             { name: 'billAmount', label: 'Bill Amount (₹)', type: 'number', required: true },
             { name: 'retentionPercentage', label: 'Retention %', type: 'number', defaultValue: '10', col: 2 },

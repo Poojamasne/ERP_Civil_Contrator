@@ -1,7 +1,6 @@
 import { useAppStore } from '../../store';
 import { User, LogOut, Home, Briefcase, FileText, Users, Truck, Package, Wrench, FileCheck, BarChart3 } from 'lucide-react';
 
-
 interface MenuItem {
   id: string;
   label: string;
