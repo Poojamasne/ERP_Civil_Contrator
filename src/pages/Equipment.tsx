@@ -29,7 +29,7 @@ export default function EquipmentPage() {
     }
 
     const purchaseValue = values.purchaseValue ? Number(values.purchaseValue) : undefined;
-    if (values.purchaseValue && (isNaN(purchaseValue) || purchaseValue < 0)) {
+    if (values.purchaseValue && (isNaN(purchaseValue!) || purchaseValue! < 0)) {
       alert('Purchase value must be a valid number');
       return;
     }
@@ -39,7 +39,7 @@ export default function EquipmentPage() {
       category: values.category,
       serialNumber: values.serialNumber,
       purchaseDate: values.purchaseDate,
-      purchaseValue: purchaseValue,
+      purchaseValue: purchaseValue || undefined,
       status: values.status || 'available',
     });
     setEquipments(equipmentService.getAll());

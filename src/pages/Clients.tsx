@@ -4,7 +4,7 @@ import { Modal } from '../components/Modal';
 import { Table } from '../components/Table';
 import { Form } from '../components/Form';
 import { Client } from '../types';
-import { Plus, Edit2, Trash2, Mail, Phone } from 'lucide-react';
+import { Plus, Edit2, Trash2 } from 'lucide-react';
 
 export default function Clients() {
   const [clients, setClients] = useState<Client[]>(clientService.getAll());

@@ -8,7 +8,7 @@ import { Table } from "../components/Table";
 import { Modal } from "../components/Modal";
 import { Form } from "../components/Form";
 import { DailyReport, Project, BOQItem } from "../types";
-import { Plus, FileText, Eye } from "lucide-react";
+import { Plus, Eye } from "lucide-react";
 
 export default function DailyReports() {
   const [reports, setReports] = useState<DailyReport[]>(
@@ -57,7 +57,7 @@ export default function DailyReports() {
     }
 
     const noOfWorkers = values.noOfWorkers ? Number(values.noOfWorkers) : undefined;
-    if (values.noOfWorkers && (isNaN(noOfWorkers) || noOfWorkers < 0)) {
+    if (values.noOfWorkers && (isNaN(noOfWorkers!) || noOfWorkers! < 0)) {
       alert('Number of workers must be a valid number');
       return;
     }
@@ -71,7 +71,7 @@ export default function DailyReports() {
       unit: values.unit,
       boqItemId: values.boqItemId || undefined,
       weather: values.weather,
-      noOfWorkers: noOfWorkers,
+      noOfWorkers: noOfWorkers || undefined,
       remarks: values.remarks,
       photos: [],
     });
