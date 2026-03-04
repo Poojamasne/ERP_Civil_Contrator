@@ -29,6 +29,30 @@ export default function Clients() {
   };
 
   const handleSubmit = (values: Record<string, any>) => {
+    // Validate required fields
+    if (!values.name || values.name.trim() === '') {
+      alert('Company name is required');
+      return;
+    }
+    if (!values.email || values.email.trim() === '') {
+      alert('Email is required');
+      return;
+    }
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(values.email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+    if (!values.phone || values.phone.trim() === '') {
+      alert('Phone number is required');
+      return;
+    }
+    if (!values.contactPerson || values.contactPerson.trim() === '') {
+      alert('Contact person name is required');
+      return;
+    }
+
     const clientData = {
       name: values.name,
       email: values.email,
@@ -74,12 +98,6 @@ export default function Clients() {
         data={clients}
         rowActions={(client) => (
           <>
-            <a href={`mailto:${client.email}`} className="p-2 hover:bg-blue-50 rounded-lg text-blue-600">
-              <Mail size={18} />
-            </a>
-            <a href={`tel:${client.phone}`} className="p-2 hover:bg-green-50 rounded-lg text-green-600">
-              <Phone size={18} />
-            </a>
             <button onClick={() => handleEdit(client)} className="p-2 hover:bg-yellow-50 rounded-lg text-yellow-600">
               <Edit2 size={18} />
             </button>

@@ -28,7 +28,7 @@ export function Modal({ isOpen, onClose, title, children, size = 'lg' }: ModalPr
             onClick={onClose}
             className="p-1 hover:bg-slate-100 rounded-lg transition-colors flex-shrink-0"
           >
-            <X size={20} className="sm:size-24 text-slate-500" />
+            <X size={20} className="sm:w-5 sm:h-5 text-slate-500" />
           </button>
         </div>
         <div className="p-3 sm:p-6">

@@ -135,7 +135,7 @@ export function LayoutSidebar({ isOpen = false, onClose }: LayoutSidebarProps) {
             </div>
             <div className={`min-w-0 ${isOpen ? 'block' : 'hidden lg:block'}`}>
               <p className="text-xs sm:text-sm font-semibold text-white truncate">{user.name}</p>
-              <p className="text-xs text-slate-400 capitalize truncate">{user.role.replace('_', ' ')}</p>
+              <p className="text-xs text-slate-400 truncate">{user.department}</p>
             </div>
           </div>
         </div>
@@ -186,8 +186,7 @@ export function LayoutSidebar({ isOpen = false, onClose }: LayoutSidebarProps) {
       <div className={`px-2 sm:px-4 lg:px-6 py-1 sm:py-2 text-xs text-slate-500 text-center border-t border-slate-800 flex-shrink-0 ${
         isOpen ? 'block' : 'hidden lg:block'
       }`}>
-        <p className={`${isOpen ? 'block' : 'hidden lg:block'}`}>v1.0.0</p>
-        <p className={`${isOpen ? 'hidden' : 'lg:hidden'}`}>v1</p>
+        
       </div>
     </aside>
   );

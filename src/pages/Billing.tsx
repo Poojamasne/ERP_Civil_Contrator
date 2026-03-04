@@ -17,8 +17,31 @@ export default function Billing() {
   };
 
   const handleSubmit = (values: Record<string, any>) => {
+    if (!values.projectId) {
+      alert('Please select a project');
+      return;
+    }
+    if (!values.billNumber || values.billNumber.trim() === '') {
+      alert('Bill number is required');
+      return;
+    }
+    if (!values.billDate) {
+      alert('Bill date is required');
+      return;
+    }
+
     const billAmount = Number(values.billAmount || 0);
     const retentionPercentage = Number(values.retentionPercentage || 10);
+
+    if (isNaN(billAmount) || billAmount <= 0) {
+      alert('Bill amount must be greater than 0');
+      return;
+    }
+    if (isNaN(retentionPercentage) || retentionPercentage < 0 || retentionPercentage > 100) {
+      alert('Retention percentage must be between 0 and 100');
+      return;
+    }
+
     const retentionAmount = billAmount * (retentionPercentage / 100);
     const subtotal = billAmount + retentionAmount;
 
@@ -56,14 +79,15 @@ export default function Billing() {
 
       <Table
         columns={[
-          { header: 'Bill #', accessor: 'billNumber' },
-          { header: 'Project', accessor: 'projectId', render: (id) => projects.find(p => p.id === id)?.name },
-          { header: 'Bill Date', accessor: 'billDate' },
-          { header: 'Amount (₹)', accessor: 'billAmount', render: (val) => val.toLocaleString() },
-          { header: 'Retention %', accessor: 'retentionPercentage', render: (val) => `${val}%` },
+          { header: 'Bill #', accessor: 'billNumber', width: '12%' },
+          { header: 'Project', accessor: 'projectId', width: '20%', render: (id) => projects.find(p => p.id === id)?.name },
+          { header: 'Bill Date', accessor: 'billDate', width: '15%' },
+          { header: 'Amount (₹)', accessor: 'billAmount', width: '15%', render: (val) => val.toLocaleString('en-IN') },
+          { header: 'Retention %', accessor: 'retentionPercentage', width: '12%', render: (val) => `${val}%` },
           {
             header: 'Status',
             accessor: 'status',
+            width: '12%',
             render: (status) => (
               <span className={`px-2 py-1 rounded text-xs font-semibold ${
                 status === 'approved' ? 'bg-green-100 text-green-800' :

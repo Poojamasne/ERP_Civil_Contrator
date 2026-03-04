@@ -17,12 +17,32 @@ export default function Inventory() {
   };
 
   const handleSubmit = (values: Record<string, any>) => {
+    // Validate required fields
+    if (!values.name || values.name.trim() === '') {
+      alert('Material name is required');
+      return;
+    }
+    if (!values.unit || values.unit.trim() === '') {
+      alert('Unit is required');
+      return;
+    }
+    if (!values.category || values.category.trim() === '') {
+      alert('Category is required');
+      return;
+    }
+
+    const reorderLevel = Number(values.reorderLevel);
+    if (isNaN(reorderLevel) || reorderLevel < 0) {
+      alert('Reorder level must be a valid number greater than or equal to 0');
+      return;
+    }
+
     const material = materialService.create({
       name: values.name,
       description: values.description,
       unit: values.unit,
       category: values.category,
-      reorderLevel: Number(values.reorderLevel),
+      reorderLevel: reorderLevel,
     });
 
     // Create initial stock

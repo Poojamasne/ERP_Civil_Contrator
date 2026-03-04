@@ -102,6 +102,12 @@ export default function Projects() {
   };
 
   const handleSubmit = (values: Record<string, any>) => {
+    // Validate date range
+    if (values.startDate && values.endDate && values.startDate > values.endDate) {
+      alert('End Date must be after Start Date');
+      return;
+    }
+
     const projectData = {
       name: values.name,
       clientId: values.clientId,

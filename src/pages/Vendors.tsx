@@ -24,6 +24,28 @@ export default function Vendors() {
   };
 
   const handleSubmit = (values: Record<string, any>) => {
+    // Validate required fields
+    if (!values.name || values.name.trim() === '') {
+      alert('Vendor name is required');
+      return;
+    }
+    if (!values.category) {
+      alert('Category is required');
+      return;
+    }
+    if (!values.phone || values.phone.trim() === '') {
+      alert('Phone number is required');
+      return;
+    }
+    if (values.email && values.email.trim() !== '') {
+      // Basic email validation if provided
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(values.email)) {
+        alert('Please enter a valid email address');
+        return;
+      }
+    }
+
     const vendorData = {
       name: values.name,
       category: values.category,

@@ -18,12 +18,28 @@ export default function EquipmentPage() {
   };
 
   const handleSubmit = (values: Record<string, any>) => {
+    // Validate required fields
+    if (!values.name || values.name.trim() === '') {
+      alert('Equipment name is required');
+      return;
+    }
+    if (!values.category || values.category.trim() === '') {
+      alert('Category is required');
+      return;
+    }
+
+    const purchaseValue = values.purchaseValue ? Number(values.purchaseValue) : undefined;
+    if (values.purchaseValue && (isNaN(purchaseValue) || purchaseValue < 0)) {
+      alert('Purchase value must be a valid number');
+      return;
+    }
+
     equipmentService.create({
       name: values.name,
       category: values.category,
       serialNumber: values.serialNumber,
       purchaseDate: values.purchaseDate,
-      purchaseValue: values.purchaseValue ? Number(values.purchaseValue) : undefined,
+      purchaseValue: purchaseValue,
       status: values.status || 'available',
     });
     setEquipments(equipmentService.getAll());

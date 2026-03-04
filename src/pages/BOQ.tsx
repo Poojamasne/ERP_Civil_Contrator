@@ -30,8 +30,32 @@ export default function BOQ() {
   };
 
   const handleSubmit = (values: Record<string, any>) => {
+    // Validate form data
+    if (!values.projectId) {
+      alert('Please select a project');
+      return;
+    }
+    if (!values.itemName || values.itemName.trim() === '') {
+      alert('Item name is required');
+      return;
+    }
+    if (!values.unit || values.unit.trim() === '') {
+      alert('Unit is required');
+      return;
+    }
+
     const quantity = Number(values.quantity);
     const rate = Number(values.rate);
+
+    if (isNaN(quantity) || quantity <= 0) {
+      alert('Quantity must be a valid number greater than 0');
+      return;
+    }
+    if (isNaN(rate) || rate <= 0) {
+      alert('Rate must be a valid number greater than 0');
+      return;
+    }
+
     const totalAmount = quantity * rate;
 
     if (editingItem) {
