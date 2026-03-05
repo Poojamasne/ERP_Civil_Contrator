@@ -63,25 +63,26 @@ function App() {
 
   return (
     <div className="flex h-screen bg-slate-50 overflow-hidden">
-      {/* Sidebar - Hidden on mobile, visible on desktop */}
+      {/* Desktop Sidebar */}
       <LayoutSidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
-      {/* Overlay for mobile/tablet when sidebar is open */}
+      {/* Mobile Overlay when sidebar is open */}
       {isSidebarOpen && (
         <div 
-          className="fixed inset-0 bg-black/50 z-30 lg:hidden"
+          className="fixed inset-0 bg-black/60 z-30 lg:hidden"
           onClick={() => setIsSidebarOpen(false)}
         />
       )}
 
-      {/* Main Content */}
-      <main className="flex-1 flex flex-col overflow-hidden w-full">
+      {/* Main Content Area */}
+      <div className="flex-1 flex flex-col overflow-hidden w-full">
         {/* Mobile/Tablet Header with Hamburger */}
-        <div className="mobile-header lg:hidden">
+        <header className="lg:hidden bg-white border-b border-slate-200 p-3 sm:p-4 sticky top-0 z-20 flex items-center gap-3">
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="p-1.5 hover:bg-slate-100 rounded-lg transition-colors flex-shrink-0"
+            className="p-2 hover:bg-slate-100 rounded-lg transition-colors flex-shrink-0"
             title="Toggle Menu"
+            aria-label="Toggle navigation menu"
           >
             {isSidebarOpen ? (
               <X size={24} className="text-slate-900" />
@@ -89,16 +90,16 @@ function App() {
               <Menu size={24} className="text-slate-900" />
             )}
           </button>
-          <span className="text-sm font-semibold text-slate-900">ERP CIVIL</span>
-        </div>
+          <span className="text-base font-semibold text-slate-900">ERP CIVIL</span>
+        </header>
 
-        {/* Page Content */}
-        <div className="flex-1 overflow-auto">
-          <div className="p-3 sm:p-4 lg:p-8 w-full">
+        {/* Main Content */}
+        <main className="flex-1 overflow-auto">
+          <div className="p-4 sm:p-6 lg:p-8 w-full h-full">
             {renderPage()}
           </div>
-        </div>
-      </main>
+        </main>
+      </div>
     </div>
   );
 }
