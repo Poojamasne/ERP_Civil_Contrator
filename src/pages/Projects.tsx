@@ -184,6 +184,7 @@ export default function Projects() {
         ]}
         data={projects}
         rowActions={(project) => (
+        <div className="flex items-center gap-2">
           <>
             <button
               onClick={() => setSelectedProject(project)}
@@ -207,6 +208,7 @@ export default function Projects() {
               <Trash2 size={18} />
             </button>
           </>
+          </div>
         )}
         emptyMessage="No projects found. Create one to get started."
       />
@@ -234,7 +236,7 @@ export default function Projects() {
         size="lg"
       >
         {selectedProject && (
-          <div className="space-y-6">
+          <div className="space-y-4">
             <div className="grid grid-cols-2 gap-6">
               <div>
                 <p className="text-sm font-medium text-slate-600">Client</p>
