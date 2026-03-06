@@ -84,22 +84,21 @@ export default function Reports() {
 
       {/* Project-Wise Summary Table */}
       <div className="card">
-        <h3 className="text-lg font-semibold text-slate-900 mb-6">Project-Wise Financial Summary</h3>
+        <h3 className="text-lg font-semibold text-slate-900 mb-6 ">Project-Wise Financial Summary</h3>
         <Table
-          columns={[
-            { header: 'Project', accessor: 'projectName' },
-            { header: 'Budget (₹)', accessor: 'budget', render: (v) => v.toLocaleString() },
-            { header: 'Billed (₹)', accessor: 'billed', render: (v) => v.toLocaleString() },
-            { header: 'Invoiced (₹)', accessor: 'invoiced', render: (v) => v.toLocaleString() },
-            { header: 'Paid (₹)', accessor: 'paid', render: (v) => v.toLocaleString() },
-            { header: 'Pending (₹)', accessor: 'pending', render: (v) => v.toLocaleString() },
-            { 
-              header: 'Profit Margin %', 
-              accessor: 'profitMargin',
-              render: (v) => `${v}%`,
-            },
-          ]}
-          data={projectSummary}
+columns={[
+  { header: <span className="whitespace-nowrap">Project</span>, accessor: 'projectName' },
+  { header: <span className="whitespace-nowrap">Budget (₹)</span>, accessor: 'budget', render: (v) => v.toLocaleString() },
+  { header: <span className="whitespace-nowrap">Billed (₹)</span>, accessor: 'billed', render: (v) => v.toLocaleString() },
+  { header: <span className="whitespace-nowrap">Invoiced (₹)</span>, accessor: 'invoiced', render: (v) => v.toLocaleString() },
+  { header: <span className="whitespace-nowrap">Paid (₹)</span>, accessor: 'paid', render: (v) => v.toLocaleString() },
+  { header: <span className="whitespace-nowrap">Pending (₹)</span>, accessor: 'pending', render: (v) => v.toLocaleString() },
+  { 
+    header: <span className="whitespace-nowrap">Profit Margin %</span>, 
+    accessor: 'profitMargin',
+    render: (v) => `${v}%`,
+  },
+]}          data={projectSummary}
         />
       </div>
 
